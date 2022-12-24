@@ -38,3 +38,21 @@ loss, accuracy = model.evaluate(x_test, y_test)
 print(loss)
 print(accuracy)
 
+# custom tests
+
+image_number = 1
+
+while os.path.isfile(f"digi/digits{image_number}.png"):
+    try:
+        img = cv2.imread(f"digi/digits{image_number}.png")[:,:,0]
+        img = np.invert(np.array[img])
+        prediction = model.predict(img)
+        print("Predicted Digit: {np.argmax(prediction}")
+        plt.imshow(img[0],cmap=plt.cm.binary)
+        plt.show()
+
+    except:
+        print("Error")
+    finally:
+        image_number += 1
+
